@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class OrbitingCamera : MonoBehaviour {
 	#region public properties
-	// The object to follow and orbit
-	public GameObject focus;
 	// Multipliers to control camera orbiting speed
 	public float yawSpeed;
 	public float pitchSpeed;
@@ -15,6 +13,9 @@ public class OrbitingCamera : MonoBehaviour {
 	#endregion
 
 	#region private state
+	// The object to follow and orbit
+	private GameObject focus;
+
 	private Vector3 offset;
 	private float yaw;
 	private float pitch;
@@ -22,6 +23,7 @@ public class OrbitingCamera : MonoBehaviour {
 
 	#region MonoBehaviour callbacks
 	void Start() {
+		this.focus = GameObject.FindWithTag("Player");
 		this.offset = this.transform.position - focus.transform.position;
 		this.yaw = this.transform.eulerAngles.x;
 		this.pitch = this.transform.eulerAngles.y;
@@ -31,6 +33,15 @@ public class OrbitingCamera : MonoBehaviour {
 		UpdatePositionRelativeToFocus();
 		UpdateRotationAndOrbitPosition();
 	}
+	#endregion
+
+	#region public methods
+	public void SetFocus(GameObject newFocus){
+		this.focus = newFocus;
+		var focusPosition = focus.transform.position;
+		this.transform.position = new Vector3(focusPosition.x, focusPosition.y + 1.5f, focusPosition.z - 4f);
+	}
+
 	#endregion
 
 	#region private helper methods
