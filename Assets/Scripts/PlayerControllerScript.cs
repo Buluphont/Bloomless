@@ -16,11 +16,17 @@ public class PlayerControllerScript : MonoBehaviour {
 
     void Update()
 	{
+        float yVel = moveDirection.y;
+
+        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+	    moveDirection = alignVectorTo(moveDirection, trackingCamera.transform);
+        moveDirection *= speed;
+
+        moveDirection += (Vector3.up * yVel);
+
         if (controller.isGrounded)
         {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-			moveDirection = alignVectorTo(moveDirection, trackingCamera.transform);
-            moveDirection *= speed;
+            
             if (Input.GetButton("Jump"))
                 moveDirection.y = jumpSpeed;
 
