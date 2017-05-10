@@ -5,10 +5,12 @@ public class PlayerControllerScript : MonoBehaviour {
     public float speed = 6.0F;
     public float jumpSpeed = 8.0F;
     public float gravity = 20.0F;
+    
 	private Camera trackingCamera;
 
 	private CharacterController controller;
     private Vector3 moveDirection = Vector3.zero;
+    private bool isglide = false;
 
 	void Start(){
 		controller = GetComponent<CharacterController>();
@@ -28,14 +30,33 @@ public class PlayerControllerScript : MonoBehaviour {
 
         if (controller.isGrounded)
         {
-            
+            if (isglide)
+                gravity = gravity * 4;
+            isglide = false;
             if (Input.GetButton("Jump"))
                 moveDirection.y = jumpSpeed;
 
+        
+
+        }
+        else
+        {
+            if (Input.GetButtonDown("Glide"))
+            {
+                if (moveDirection.y < 0 && !isglide)
+                {
+                    gravity = gravity / 4;
+                    isglide = true;
+                }
+            }
+            if (Input.GetButtonUp("Glide") && isglide)
+            {
+                gravity = gravity * 4;
+                isglide = false;
+            }
         }
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
-
 		if(Input.GetKeyDown(KeyCode.R)) {
 			GameObject.FindWithTag("Game State Manager").GetComponent<CheckpointController>().respawnFromLastCheckpoint();
 			Destroy(this.gameObject);
