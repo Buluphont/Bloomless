@@ -37,8 +37,8 @@ public class PlayerControllerScript : MonoBehaviour {
         controller.Move(moveDirection * Time.deltaTime);
 
 		if(Input.GetKeyDown(KeyCode.R)) {
-			GameObject.FindWithTag("Game State Manager").GetComponent<CheckpointController>().respawnFromLastCheckpoint();
 			Destroy(this.gameObject);
+			GameObject.FindWithTag("Game State Manager").GetComponent<CheckpointController>().RespawnFromLastCheckpoint();
 		}
     }
 
