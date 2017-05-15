@@ -5,13 +5,21 @@ using UnityEngine;
 public class UIManager : MonoBehaviour 
 {
     GameObject[] pauseObjects;
+    GameObject[] finishObjects;
+    PlayerControllerScript playerController;
 
 	// Use this for initialization
 	void Start () 
     {
         Time.timeScale = 1;
         pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
+        finishObjects = GameObject.FindGameObjectsWithTag("ShowOnFinish");
         hidePaused();
+        hideFinished();
+        if(Application.loadedLevelName == "Scene1")
+        {
+            playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerScript>();
+        }
 	}
 
     public void Reload()
@@ -24,17 +32,21 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Time.timeScale == 1)
+            if (Time.timeScale == 1 && playerController.alive == true)
             {
                 Time.timeScale = 0;
                 showPaused();
             }
-            else if (Time.timeScale == 0)
+            else if (Time.timeScale == 0 && playerController.alive == true)
             {
                 Time.timeScale = 1;
                 hidePaused();
             }
         }
+            if (Time.timeScale == 0 && playerController.alive == false)
+            {
+                showFinished();
+            }
 		
 	}
     public void pauseControl()
@@ -61,6 +73,20 @@ public class UIManager : MonoBehaviour
     public void hidePaused()
     {
         foreach(GameObject button in pauseObjects)
+        {
+            button.SetActive(false);
+        }
+    }
+    public void showFinished()
+    {
+        foreach(GameObject button in finishObjects)
+        {
+            button.SetActive(true);
+        }
+    }
+    public void hideFinished()
+    {
+        foreach(GameObject button in finishObjects)
         {
             button.SetActive(false);
         }

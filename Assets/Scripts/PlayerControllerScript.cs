@@ -6,11 +6,13 @@ public class PlayerControllerScript : MonoBehaviour {
     public float jumpSpeed = 8.0F;
     public float gravity = 20.0F;
 	private Camera trackingCamera;
+    public bool alive;
 
 	private CharacterController controller;
     private Vector3 moveDirection = Vector3.zero;
 
 	void Start(){
+        alive = true;
 		controller = GetComponent<CharacterController>();
 		this.trackingCamera = Camera.main;
 		trackingCamera.GetComponent<OrbitingCamera>().SetFocus(this.gameObject);

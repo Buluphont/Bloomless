@@ -7,7 +7,9 @@ public class CollisionDamage : MonoBehaviour {
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.SetActive(false);
+            other.gameObject.GetComponent<PlayerControllerScript>().alive = false;
+            Destroy(other.gameObject);
+            Time.timeScale = 0;
         }
     }
 }
