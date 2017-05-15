@@ -1,0 +1,54 @@
+Initialize engine version: 5.6.0f3 (497a0f351392)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 860M (ID=0x1392)
+    Vendor:   NVIDIA
+    VRAM:     2018 MB
+    Driver:   21.21.13.7654
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Asterialy\Desktop\Bloomless\Bloomless\test_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Asterialy\Desktop\Bloomless\Bloomless\test_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Asterialy\Desktop\Bloomless\Bloomless\test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Asterialy\Desktop\Bloomless\Bloomless\test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Asterialy\Desktop\Bloomless\Bloomless\test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Asterialy\Desktop\Bloomless\Bloomless\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Asterialy\Desktop\Bloomless\Bloomless\test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Asterialy\Desktop\Bloomless\Bloomless\test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Asterialy\Desktop\Bloomless\Bloomless\test_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\Asterialy\Desktop\Bloomless\Bloomless\test_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.027 seconds
+Platform assembly: C:\Users\Asterialy\Desktop\Bloomless\Bloomless\test_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Asterialy\Desktop\Bloomless\Bloomless\test_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.821436 ms
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 39c -> priority: 1 
+  Thread -> id: db4 -> priority: 1 
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.808168 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 352.
+Total: 0.485325 ms (FindLiveObjects: 0.034823 ms CreateObjectMapping: 0.026025 ms MarkObjects: 0.413113 ms  DeleteObjects: 0.010263 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.248136 ms
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 269.
+Total: 0.582830 ms (FindLiveObjects: 0.042154 ms CreateObjectMapping: 0.042520 ms MarkObjects: 0.273820 ms  DeleteObjects: 0.222501 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.853351 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 353.
+Total: 0.531145 ms (FindLiveObjects: 0.049485 ms CreateObjectMapping: 0.044720 ms MarkObjects: 0.420810 ms  DeleteObjects: 0.015028 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.966252 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 353.
+Total: 0.488991 ms (FindLiveObjects: 0.052784 ms CreateObjectMapping: 0.044720 ms MarkObjects: 0.377923 ms  DeleteObjects: 0.012829 ms)
+
