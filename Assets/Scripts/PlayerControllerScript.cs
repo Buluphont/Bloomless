@@ -5,6 +5,7 @@ public class PlayerControllerScript : MonoBehaviour {
     public float speed = 6.0F;
     public float jumpSpeed = 8.0F;
     public float gravity = 20.0F;
+	public float glidediv = 4.0f;
     
 	private Camera trackingCamera;
     public bool alive;
@@ -12,6 +13,7 @@ public class PlayerControllerScript : MonoBehaviour {
 	private CharacterController controller;
     private Vector3 moveDirection = Vector3.zero;
     private bool isglide = false;
+
 
 	void Start(){
         alive = true;
@@ -32,8 +34,9 @@ public class PlayerControllerScript : MonoBehaviour {
 
         if (controller.isGrounded)
         {
+			
             if (isglide)
-                gravity = gravity * 4;
+				gravity = gravity * glidediv;
             isglide = false;
             if (Input.GetButton("Jump"))
                 moveDirection.y = jumpSpeed;
@@ -43,17 +46,19 @@ public class PlayerControllerScript : MonoBehaviour {
         }
         else
         {
-            if (Input.GetButton("Glide"))
-            {
-                if (moveDirection.y < 0 && !isglide)
+			if (Input.GetButtonDown ("Jump")) {
+				moveDirection.y = jumpSpeed;
+			}
+			if (Input.GetButton("Jump")){
+				if (moveDirection.y < 0 && !isglide)
                 {
-                    gravity = gravity / 4;
+					gravity = gravity / glidediv;
                     isglide = true;
                 }
             }
-            if (Input.GetButtonUp("Glide") && isglide)
+            if (Input.GetButtonUp("Jump") && isglide)
             {
-                gravity = gravity * 4;
+				gravity = gravity * glidediv;
                 isglide = false;
             }
         }
