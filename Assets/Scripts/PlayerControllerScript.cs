@@ -59,10 +59,6 @@ public class PlayerControllerScript : MonoBehaviour {
         }
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
-		if(Input.GetKeyDown(KeyCode.R)) {
-			Destroy(this.gameObject);
-			GameObject.FindWithTag("Game State Manager").GetComponent<CheckpointController>().RespawnFromLastCheckpoint();
-		}
         
         if (Input.GetKeyDown(KeyCode.B))
         {
