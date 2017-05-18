@@ -7,12 +7,14 @@ public class PlayerControllerScript : MonoBehaviour {
     public float gravity = 20.0F;
     
 	private Camera trackingCamera;
+    public bool alive;
 
 	private CharacterController controller;
     private Vector3 moveDirection = Vector3.zero;
     private bool isglide = false;
 
 	void Start(){
+        alive = true;
 		controller = GetComponent<CharacterController>();
 		this.trackingCamera = Camera.main;
 		trackingCamera.GetComponent<OrbitingCamera>().SetFocus(this.gameObject);
@@ -58,9 +60,14 @@ public class PlayerControllerScript : MonoBehaviour {
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
 		if(Input.GetKeyDown(KeyCode.R)) {
-			GameObject.FindWithTag("Game State Manager").GetComponent<CheckpointController>().respawnFromLastCheckpoint();
 			Destroy(this.gameObject);
+			GameObject.FindWithTag("Game State Manager").GetComponent<CheckpointController>().RespawnFromLastCheckpoint();
 		}
+        
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            controller.transform.position += transform.forward*5.0f;
+        }
     }
 
 	private Vector3 alignVectorTo(Vector3 vector, Transform target){
