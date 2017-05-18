@@ -16,19 +16,21 @@ public class UIManager : MonoBehaviour
         finishObjects = GameObject.FindGameObjectsWithTag("ShowOnFinish");
         hidePaused();
         hideFinished();
-        if(Application.loadedLevelName == "Scene1")
-        {
-            playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerScript>();
-        }
-	}
-
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerScript>();
+    }
+    public void LoadLevel(string level)
+    {
+        Application.LoadLevel(level);
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerScript>();
+    }
     public void Reload()
     {
        Application.LoadLevel(Application.loadedLevel);
+       playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerScript>();
     }
-	
-	// Update is called once per frame
-	void Update () 
+
+    // Update is called once per frame
+    void Update () 
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -43,11 +45,6 @@ public class UIManager : MonoBehaviour
                 hidePaused();
             }
         }
-            if (Time.timeScale == 0 && playerController.alive == false)
-            {
-                showFinished();
-            }
-		
 	}
     public void pauseControl()
     {
@@ -62,6 +59,14 @@ public class UIManager : MonoBehaviour
             hidePaused();
         }
 
+    }
+    public void respawn()
+    {
+        GameObject.FindWithTag("Game State Manager").GetComponent<CheckpointController>().RespawnFromLastCheckpoint();
+        playerController.alive = true;
+        Time.timeScale = 1;
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerScript>();
+        hideFinished();
     }
     public void showPaused()
     {
@@ -90,9 +95,5 @@ public class UIManager : MonoBehaviour
         {
             button.SetActive(false);
         }
-    }
-    public void LoadLevel(string level)
-    {
-        Application.LoadLevel(level);
     }
 }

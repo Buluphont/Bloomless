@@ -10,6 +10,8 @@ public class CollisionDamage : MonoBehaviour {
             other.gameObject.GetComponent<PlayerControllerScript>().alive = false;
             Destroy(other.gameObject);
             Time.timeScale = 0;
+            GameObject UIManager = GameObject.FindGameObjectWithTag("UIManager");
+            UIManager.gameObject.GetComponent<UIManager>().showFinished();
         }
     }
 }

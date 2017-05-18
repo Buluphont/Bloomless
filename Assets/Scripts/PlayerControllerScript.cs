@@ -42,6 +42,11 @@ public class PlayerControllerScript : MonoBehaviour {
 			Destroy(this.gameObject);
 			GameObject.FindWithTag("Game State Manager").GetComponent<CheckpointController>().RespawnFromLastCheckpoint();
 		}
+        
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            controller.transform.position += transform.forward*5.0f;
+        }
     }
 
 	private Vector3 alignVectorTo(Vector3 vector, Transform target){
