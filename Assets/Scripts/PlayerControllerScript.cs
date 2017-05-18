@@ -43,7 +43,7 @@ public class PlayerControllerScript : MonoBehaviour {
         }
         else
         {
-            if (Input.GetButtonDown("Glide"))
+            if (Input.GetButton("Glide"))
             {
                 if (moveDirection.y < 0 && !isglide)
                 {
