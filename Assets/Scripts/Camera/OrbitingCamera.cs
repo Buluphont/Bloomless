@@ -68,7 +68,6 @@ public class OrbitingCamera : MonoBehaviour {
 		this.transform.LookAt(focus.transform);
 
 		// Check for obstructions and reposition as necessary
-		Transform t = focus.transform;
 		Vector3 rayDirection = this.transform.forward * -1;
 		RaycastHit hit;
 		if(Physics.Raycast(focus.transform.position, rayDirection, out hit, maxCameraDistance)) {
