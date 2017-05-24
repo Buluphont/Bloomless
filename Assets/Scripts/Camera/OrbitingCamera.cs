@@ -38,9 +38,12 @@ public class OrbitingCamera : MonoBehaviour {
 	public void SetFocus(GameObject newFocus){
 		this.focus = newFocus;
 		var focusPosition = focus.transform.position;
+		// Place the camera at a 45 degree angle, maxCameraDistance away from the focus
 		this.transform.position = focus.transform.position;
 		this.transform.Translate((focus.transform.forward * -1) * (maxCameraDistance / 2));
 		this.transform.Translate((focus.transform.up) * (maxCameraDistance / 2));
+
+		// Get initial offset, yaw, pitch
 		this.offset = this.transform.position - focus.transform.position;
 		this.yaw = this.transform.eulerAngles.x;
 		this.pitch = this.transform.eulerAngles.y;
