@@ -1,31 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerControllerScript : MonoBehaviour {
+public class PlayerControllerScript : MonoBehaviour
+{
     public float speed = 6.0F;
     public float jumpSpeed = 8.0F;
     public float gravity = 20.0F;
-    
-	private Camera trackingCamera;
     public bool alive;
+    public bool isDashing = false;
+    private Camera trackingCamera;
 
-	private CharacterController controller;
+    private CharacterController controller;
     private Vector3 moveDirection = Vector3.zero;
     private bool isglide = false;
-
-	void Start(){
+    private float dashTimer = 0.0F;
+    void Start()
+    {
         alive = true;
-		controller = GetComponent<CharacterController>();
-		this.trackingCamera = Camera.main;
-		trackingCamera.GetComponent<OrbitingCamera>().SetFocus(this.gameObject);
-	}
+        controller = GetComponent<CharacterController>();
+        this.trackingCamera = Camera.main;
+        trackingCamera.GetComponent<OrbitingCamera>().SetFocus(this.gameObject);
+    }
 
     void Update()
-	{
+    {
         float yVel = moveDirection.y;
 
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-	    moveDirection = alignVectorTo(moveDirection, trackingCamera.transform);
+        moveDirection = alignVectorTo(moveDirection, trackingCamera.transform);
         moveDirection *= speed;
 
         moveDirection += (Vector3.up * yVel);
@@ -38,7 +40,7 @@ public class PlayerControllerScript : MonoBehaviour {
             if (Input.GetButton("Jump"))
                 moveDirection.y = jumpSpeed;
 
-        
+
 
         }
         else
@@ -58,22 +60,48 @@ public class PlayerControllerScript : MonoBehaviour {
             }
         }
         moveDirection.y -= gravity * Time.deltaTime;
-        controller.Move(moveDirection * Time.deltaTime);
-        
-        if (Input.GetKeyDown(KeyCode.B))
+
+
+        //controller.transform.rotation = Quaternion.Slerp(controller.transform.rotation, Quaternion.LookRotation(moveDirection), 0.5f);
+
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            controller.transform.position += transform.forward*5.0f;
+            Destroy(this.gameObject);
+            GameObject.FindWithTag("Game State Manager").GetComponent<CheckpointController>().RespawnFromLastCheckpoint();
+        }
+        if (dashTimer > 0.0F)
+        {
+            dashTimer -= 1.0F;
+            if (dashTimer == 0.0F)
+            {
+                isDashing = false;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.B) && dashTimer == 0.0F)
+        {
+            isDashing = true;
+            dashTimer = 10.0F;
+        }
+
+        if (isDashing)
+        {
+            controller.SimpleMove(transform.forward * 20);
+        }
+        else
+        {
+            controller.Move(moveDirection * Time.deltaTime);
         }
     }
 
-	private Vector3 alignVectorTo(Vector3 vector, Transform target){
-		// Rotate along camera axes
-		vector = target.TransformDirection(vector);
+    private Vector3 alignVectorTo(Vector3 vector, Transform target)
+    {
+        // Rotate along camera axes
+        vector = target.TransformDirection(vector);
 
-		// Negate y component, restore magnitude lost from negating y component
-		float originalMagnitude = vector.magnitude;
-		vector.y = 0;
-		vector = vector.normalized * originalMagnitude;
-		return vector;
-	}
+        // Negate y component, restore magnitude lost from negating y component
+        float originalMagnitude = vector.magnitude;
+        vector.y = 0;
+        vector = vector.normalized * originalMagnitude;
+        return vector;
+    }
 }
