@@ -28,6 +28,10 @@ public class PlayerControllerScript : MonoBehaviour
 
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         moveDirection = alignVectorTo(moveDirection, trackingCamera.transform);
+        if (moveDirection.sqrMagnitude > 0)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(moveDirection.x, 0, moveDirection.z)), 0.5f);
+        }
         moveDirection *= speed;
 
         moveDirection += (Vector3.up * yVel);
@@ -60,9 +64,6 @@ public class PlayerControllerScript : MonoBehaviour
             }
         }
         moveDirection.y -= gravity * Time.deltaTime;
-
-
-        //controller.transform.rotation = Quaternion.Slerp(controller.transform.rotation, Quaternion.LookRotation(moveDirection), 0.5f);
 
         if (Input.GetKeyDown(KeyCode.R))
         {
