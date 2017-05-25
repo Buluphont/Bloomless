@@ -33,5 +33,6 @@ public class Bloomable : MonoBehaviour {
 		// TODO: Replace this simple rotation with model change or animation or whatever
 		// and also accompanying changes in game state
 		this.gameObject.transform.Rotate(new Vector3(0, 0, 90));
+		GameObject.FindWithTag("Game State Manager").GetComponent<CheckpointController>().SetCheckpoint(this.gameObject);
 	}
 }
