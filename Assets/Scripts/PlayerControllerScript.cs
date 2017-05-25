@@ -6,28 +6,18 @@ public class PlayerControllerScript : MonoBehaviour
     public float speed = 6.0F;
     public float jumpSpeed = 8.0F;
     public float gravity = 20.0F;
-<<<<<<< HEAD
-	public float glidediv = 4.0f;
-    
-	private Camera trackingCamera;
-=======
->>>>>>> origin/master
     public bool alive;
     public bool isDashing = false;
+	public float glidediv = 4.0f;
+	
     private Camera trackingCamera;
-
     private CharacterController controller;
     private Vector3 moveDirection = Vector3.zero;
     private bool isglide = false;
-<<<<<<< HEAD
 
-
-	void Start(){
-=======
     private float dashTimer = 0.0F;
     void Start()
     {
->>>>>>> origin/master
         alive = true;
         controller = GetComponent<CharacterController>();
         this.trackingCamera = Camera.main;
