@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update () 
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonDown("Pause"))
         {
             if (Time.timeScale == 1 && playerController.alive == true)
             {

@@ -76,19 +76,19 @@ public class PlayerControllerScript : MonoBehaviour
             if (dashTimer == 0.0F)
             {
                 isDashing = false;
-                Physics.IgnoreLayerCollision(8, 9, isDashing);
+                Physics.IgnoreLayerCollision(2, 9, isDashing);
             }
         }
         if (dashCooldown > 0.0F)
         {
             dashCooldown -= 1.0F;
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dashTimer == 0.0F && dashCooldown == 0.0F)
+        if (Input.GetButtonDown("Dash") && dashTimer == 0.0F && dashCooldown == 0.0F)
         {
             isDashing = true;
             dashTimer = maxDashDuration;
             dashCooldown = maxDashCooldown;
-            Physics.IgnoreLayerCollision(8, 9, isDashing);
+            Physics.IgnoreLayerCollision(2, 9, isDashing);
         }
 
         if (isDashing)
