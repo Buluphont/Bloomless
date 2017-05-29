@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour {
 	private int redPollen = 0;
-	private int greenPollen = 0;
+	private int purplePollen = 0;
 	private int bluePollen = 0;
+    private int yellowPollen = 0;
 
 	public void AddPollen(PollenPickup.PollenType type){
 		AddPollen(1, type);
@@ -16,12 +17,15 @@ public class Inventory : MonoBehaviour {
 			case PollenPickup.PollenType.Red:
 				redPollen += amount;
 				break;
-			case PollenPickup.PollenType.Green:
-				greenPollen += amount;
+			case PollenPickup.PollenType.Purple:
+				purplePollen += amount;
 				break;
 			case PollenPickup.PollenType.Blue:
 				bluePollen += amount;
 				break;
+            case PollenPickup.PollenType.Yellow:
+                yellowPollen += amount;
+                break;
 			default:
 				Debug.LogWarning("Inventory.AddPollen :: Unrecognized PollenType");
 				break;
@@ -36,10 +40,12 @@ public class Inventory : MonoBehaviour {
 		switch(type) {
 			case PollenPickup.PollenType.Red:
 				return this.redPollen;
-			case PollenPickup.PollenType.Green:
-				return this.greenPollen;
+			case PollenPickup.PollenType.Purple:
+				return this.purplePollen;
 			case PollenPickup.PollenType.Blue:
 				return this.bluePollen;
+            case PollenPickup.PollenType.Yellow:
+                return this.yellowPollen;
 			default:
 				throw new System.Exception("Inventory.GetPollen :: Unrecognized PollenType");
 		}
