@@ -5,13 +5,13 @@ public class PlayerControllerScript : MonoBehaviour
 {
     public float speed = 6.0F;
     public float jumpSpeed = 8.0F;
+    public float dashSpeedMultiplier = 2.5f;
     public float gravity = 20.0F;
     public bool alive;
     public bool isDashing = false;
 	public float glidediv = 4.0f;
     public float maxDashCooldown = 200.0f;
     public float maxDashDuration = 30.0f;
-
 	
     private Camera trackingCamera;
     private CharacterController controller;
@@ -37,23 +37,18 @@ public class PlayerControllerScript : MonoBehaviour
         moveDirection = alignVectorTo(moveDirection, trackingCamera.transform);
         if (moveDirection.sqrMagnitude > 0)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(moveDirection.x, moveDirection.y, moveDirection.z)), 0.5f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(moveDirection.x, 0, moveDirection.z)), 0.5f);
         }
         moveDirection *= speed;
-
         moveDirection += (Vector3.up * yVel);
 
         if (controller.isGrounded)
         {
-			
             if (isglide)
 				gravity = gravity * glidediv;
             isglide = false;
             if (Input.GetButton("Jump"))
                 moveDirection.y = jumpSpeed;
-
-
-
         }
         else
         {
@@ -81,6 +76,7 @@ public class PlayerControllerScript : MonoBehaviour
             if (dashTimer == 0.0F)
             {
                 isDashing = false;
+                Physics.IgnoreLayerCollision(8, 9, isDashing);
             }
         }
         if (dashCooldown > 0.0F)
@@ -92,11 +88,12 @@ public class PlayerControllerScript : MonoBehaviour
             isDashing = true;
             dashTimer = maxDashDuration;
             dashCooldown = maxDashCooldown;
+            Physics.IgnoreLayerCollision(8, 9, isDashing);
         }
 
         if (isDashing)
         {
-            controller.SimpleMove(transform.forward * 20);
+            controller.Move(transform.forward *  this.speed * this.dashSpeedMultiplier * Time.deltaTime);
         }
         else
         {
