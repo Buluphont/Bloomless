@@ -9,13 +9,18 @@ public class PlayerControllerScript : MonoBehaviour
     public bool alive;
     public bool isDashing = false;
 	public float glidediv = 4.0f;
+    public float maxDashCooldown = 200.0f;
+    public float maxDashDuration = 30.0f;
+
 	
     private Camera trackingCamera;
     private CharacterController controller;
     private Vector3 moveDirection = Vector3.zero;
     private bool isglide = false;
+    private float dashCooldown = 0.0f;
 
     private float dashTimer = 0.0F;
+
     void Start()
     {
         alive = true;
@@ -32,7 +37,7 @@ public class PlayerControllerScript : MonoBehaviour
         moveDirection = alignVectorTo(moveDirection, trackingCamera.transform);
         if (moveDirection.sqrMagnitude > 0)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(moveDirection.x, 0, moveDirection.z)), 0.5f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(moveDirection.x, moveDirection.y, moveDirection.z)), 0.5f);
         }
         moveDirection *= speed;
 
@@ -78,10 +83,15 @@ public class PlayerControllerScript : MonoBehaviour
                 isDashing = false;
             }
         }
-        if (Input.GetKeyDown(KeyCode.B) && dashTimer == 0.0F)
+        if (dashCooldown > 0.0F)
+        {
+            dashCooldown -= 1.0F;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dashTimer == 0.0F && dashCooldown == 0.0F)
         {
             isDashing = true;
-            dashTimer = 10.0F;
+            dashTimer = maxDashDuration;
+            dashCooldown = maxDashCooldown;
         }
 
         if (isDashing)
