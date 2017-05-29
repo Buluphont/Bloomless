@@ -5,8 +5,9 @@ using UnityEngine;
 public class PollenPickup : Pickup {
 	public enum PollenType {
 		Red,
-		Green,
-		Blue
+		Purple,
+		Blue,
+        Yellow
 	}
 
 	public PollenType type;
