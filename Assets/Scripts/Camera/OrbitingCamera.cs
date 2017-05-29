@@ -61,7 +61,7 @@ public class OrbitingCamera : MonoBehaviour {
 		float yawDelta = Input.GetAxis("Mouse X") * yawSpeed;
 		float pitchDelta = Input.GetAxis("Mouse Y") * pitchSpeed;
 		yaw += yawDelta;
-		pitch -= pitchDelta;
+		pitch += pitchDelta;
 		pitch = Clamp(pitch, pitchAngleMin, pitchAngleMax);
 
 		// Update camera's orbiting position relative to focus
