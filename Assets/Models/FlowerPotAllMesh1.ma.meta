@@ -1,0 +1,147 @@
+fileFormatVersion: 2
+guid: 3be27adeddf48814183097763faa0f38
+timeCreated: 1496267713
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: bloomed
+    100002: flowerbud
+    100004: flowerpot
+    100006: //RootNode
+    100008: leaf
+    100010: leaf1
+    100012: leaf2
+    100014: middle
+    100016: petal1
+    100018: petal2
+    100020: petal3
+    100022: petal4
+    100024: petal5
+    100026: petal6
+    100028: stem
+    400000: bloomed
+    400002: flowerbud
+    400004: flowerpot
+    400006: //RootNode
+    400008: leaf
+    400010: leaf1
+    400012: leaf2
+    400014: middle
+    400016: petal1
+    400018: petal2
+    400020: petal3
+    400022: petal4
+    400024: petal5
+    400026: petal6
+    400028: stem
+    2300000: flowerbud
+    2300002: flowerpot
+    2300004: leaf
+    2300006: leaf1
+    2300008: leaf2
+    2300010: middle
+    2300012: petal1
+    2300014: petal2
+    2300016: petal3
+    2300018: petal4
+    2300020: petal5
+    2300022: petal6
+    2300024: stem
+    3300000: flowerbud
+    3300002: flowerpot
+    3300004: leaf
+    3300006: leaf1
+    3300008: leaf2
+    3300010: middle
+    3300012: petal1
+    3300014: petal2
+    3300016: petal3
+    3300018: petal4
+    3300020: petal5
+    3300022: petal6
+    3300024: stem
+    4300000: flowerpot
+    4300002: stem
+    4300004: flowerbud
+    4300006: leaf
+    4300008: leaf1
+    4300010: leaf2
+    4300012: middle
+    4300014: petal1
+    4300016: petal2
+    4300018: petal3
+    4300020: petal4
+    4300022: petal5
+    4300024: petal6
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
