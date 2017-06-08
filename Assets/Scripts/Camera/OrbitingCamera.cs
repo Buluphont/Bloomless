@@ -29,8 +29,10 @@ public class OrbitingCamera : MonoBehaviour {
 	}
 	
 	void LateUpdate() {
-		UpdatePositionRelativeToFocus();
-		UpdateRotationAndOrbitPosition();
+		if (focus != null) {
+			UpdatePositionRelativeToFocus ();
+			UpdateRotationAndOrbitPosition ();
+		}
 	}
 	#endregion
 
