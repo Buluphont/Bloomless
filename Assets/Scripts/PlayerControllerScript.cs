@@ -91,7 +91,7 @@ public class PlayerControllerScript : MonoBehaviour
             isDashing = true;
             dashTimer = maxDashDuration;
             dashCooldown = maxDashCooldown;
-            Physics.IgnoreLayerCollision(2, 9, isDashing);
+            Physics.IgnoreLayerCollision(0, 9, isDashing);
         }
 
         if (isDashing)
