@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bloomable : MonoBehaviour {
 	public PollenPickup.PollenType type;
 	public int requiredPollen;
+	public GameObject bloomedFlower;
 
 	private bool bloomed;
 
@@ -32,7 +33,8 @@ public class Bloomable : MonoBehaviour {
 		bloomed = true;
 		// TODO: Replace this simple rotation with model change or animation or whatever
 		// and also accompanying changes in game state
-		this.gameObject.transform.Rotate(new Vector3(0, 0, 90));
-		GameObject.FindWithTag("Game State Manager").GetComponent<CheckpointController>().SetCheckpoint(this.gameObject);
+		this.gameObject.SetActive(false);
+		bloomedFlower.SetActive (true);
+		GameObject.FindWithTag("Game State Manager").GetComponent<CheckpointController>().SetCheckpoint(bloomedFlower);
 	}
 }
