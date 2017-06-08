@@ -18,6 +18,7 @@ public class PlayerControllerScript : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     private bool isglide = false;
     private float dashCooldown = 0.0f;
+	private bool double_jump = false;
 
     private float dashTimer = 0.0F;
 
@@ -44,6 +45,7 @@ public class PlayerControllerScript : MonoBehaviour
 
         if (controller.isGrounded)
         {
+			double_jump = false;
             if (isglide)
 				gravity = gravity * glidediv;
             isglide = false;
@@ -52,8 +54,9 @@ public class PlayerControllerScript : MonoBehaviour
         }
         else
         {
-			if (Input.GetButtonDown ("Jump")) {
+			if (Input.GetButtonDown ("Jump") && !double_jump) {
 				moveDirection.y = jumpSpeed;
+				double_jump = true;
 			}
 			if (Input.GetButton("Jump")){
 				if (moveDirection.y < 0 && !isglide)
