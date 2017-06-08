@@ -7,6 +7,7 @@ public class EnemySight : MonoBehaviour {
 	public float fieldOfViewAngle = 110f;
 	public bool playerInSight;
 	public Vector3 personalLastSighting;
+	public GameObject raycast;
 
 	private UnityEngine.AI.NavMeshAgent nav;
 	private SphereCollider col;
@@ -29,8 +30,8 @@ public class EnemySight : MonoBehaviour {
 
 			if (angle < fieldOfViewAngle * 0.5f) {
 				RaycastHit hit;
-
 				if (Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, col.radius)){
+					raycast = hit.collider.gameObject;
 					if(hit.collider.gameObject == player){
 						playerInSight = true;
 						previousLastSighting = personalLastSighting;
